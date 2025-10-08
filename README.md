@@ -17,6 +17,19 @@ This project demonstrates expert-level integration of multiple Azure Cognitive S
 
 ## 🧭 Architecture Overview
 
+```mermaid
+graph TD
+A[User Request] --> B[ASP.NET Core API]
+B --> C1[Azure OpenAI (Chat, DALL·E, Embeddings)]
+B --> C2[Azure Blob Storage]
+B --> C3[Azure AI Search (Vector Index)]
+B --> C4[Azure Content Safety]
+B --> C5[Application Insights]
+C2 --> C3
+C3 --> C1
+```
+
+
 The system follows a modular service-oriented design:
 
 - Each capability (Chat, Image, RAG, Safety, Metrics) lives in an isolated service.
@@ -183,12 +196,12 @@ You’ll see the interactive Swagger UI, complete with summaries, request schema
 - Responsible AI enforcement via Content Safety
 
   ---
-  ### 🧠 Why FenecAI Matters
+### 🧠 Why FenecAI Matters
 
 FenecAI was designed not just as a project, but as a statement of craftsmanship.
 It reflects years of software engineering discipline — merging technical mastery, ethical AI design, and clean architecture into one unified system.
 
-**“Discipline, clarity, and excellence — every line of code is a reflection of mindset.”**
+> **“Discipline, clarity, and excellence — every line of code is a reflection of mindset.”**
 
 ### 📜 License
 
@@ -197,28 +210,12 @@ This project is released under the MIT License.
 ## 👤 Author
 
 Alonso Gallegos
-
 Senior Software Engineer | Azure AI Engineer
 
 📍 Costa Rica
-
 💼 GitHub – alonsoegm
 
-🌐 “Engineering with purpose, discipline, and conscience.”
-
-
----
-
-### ✅ How to Use
-1. Copy everything above into your root directory as **`README.md`**.  
-2. Commit it using:
-
-```bash
-git add README.md
-git commit -m "🦊 Added professional README with architecture and deployment details"
-git push
-```
-
+> 🌐 “Engineering with purpose, discipline, and conscience.”
 
 
 
