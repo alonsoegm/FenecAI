@@ -24,7 +24,7 @@ The system follows a modular service-oriented design:
 - Asynchronous programming ensures scalability and high throughput.
 
 ---
-☁️ Azure Resources Required
+## ☁️ Azure Resources Required
 To deploy and run FenecAI successfully, create the following Azure resources:
 
 | **Service**                 | **Resource Type**                      | **Purpose**                                   | **Example Name** |
@@ -37,7 +37,8 @@ To deploy and run FenecAI successfully, create the following Azure resources:
 
 ---
 
-🧩 Required Deployments in Azure OpenAI
+## 🧩 Required Deployments in Azure OpenAI:
+
 | **Deployment Name**      | **Model**   | **Purpose**                               |
 | ------------------------ | ----------- | ----------------------------------------- |
 | `gpt-4.1`                | GPT-4 Turbo | Chat and RAG completions                  |
@@ -45,10 +46,12 @@ To deploy and run FenecAI successfully, create the following Azure resources:
 | `dall-e-3`               | DALL·E 3    | Image generation                          |
 
 ---
-⚙️ Configuration — appsettings.json
+
+## ⚙️ Configuration — appsettings.json
 
 Before running the API, configure the following keys:
 
+```bash
 {
   "AzureOpenAI": {
     "Endpoint": "https://YOUR-OPENAI-RESOURCE.cognitiveservices.azure.com/",
@@ -72,12 +75,14 @@ Before running the API, configure the following keys:
     "ApiKey": "YOUR_SAFETY_KEY"
   }
 }
+```
 
 ⚠️ Important:
 Add appsettings.json to .gitignore so credentials are never pushed to GitHub.
 
 ---
-🧠 Core API Endpoints
+
+## 🧠 Core API Endpoints
 
 | **Module**    | **HTTP Method** | **Endpoint**                   | **Description**                          |
 | ------------- | --------------- | ------------------------------ | ---------------------------------------- |
@@ -95,8 +100,9 @@ Add appsettings.json to .gitignore so credentials are never pushed to GitHub.
 
 ---
 
-🔁 RAG (Retrieval-Augmented Generation) Flow
+## 🔁 RAG (Retrieval-Augmented Generation) Flow
 
+```mermaid
 sequenceDiagram
     participant U as User
     participant API as FenecAI API
@@ -113,10 +119,11 @@ sequenceDiagram
     API->>GPT: Combine context + question
     GPT-->>API: Grounded answer
     API-->>U: Final response with sources
+```
 
 ---
 
-🚀 Running Locally
+## 🚀 Running Locally
 Prerequisites
 
 - .NET 8 SDK
@@ -126,37 +133,47 @@ Prerequisites
 
 ---
 
-Run Instructions
+##  Run Instructions
 
-# 1️⃣ Restore dependencies
+#### 1️⃣ Restore dependencies
+```bash
 dotnet restore
+```
 
-# 2️⃣ Build solution
+#### 2️⃣ Build solution
+```bash
 dotnet build
+```
 
-# 3️⃣ Run API locally
+#### 3️⃣ Run API locally
+```bash
 dotnet run
+```
 
-Then open:
+####  Then open:
 
 🔗 https://localhost:7131/swagger/index.html
 
 You’ll see the interactive Swagger UI, complete with summaries, request schemas, and example payloads.
 
 
-📊 Example: RAG Query Flow
+### 📊 Example: RAG Query Flow
 
 1- Upload your .txt documents to the Blob Storage container.
+
 2- Call /api/RAG/ingest — chunks, embeds, and indexes documents.
+
 3- Ask a question via /api/RAG/query, e.g.:
 
+```bash
 {
   "question": "What are the core values of FenecAI?"
 }
+```
 
-✅ Returns a semantically grounded answer and the contextual sources used
+### ✅ Returns a semantically grounded answer and the contextual sources used
 
-💎 Quality and Design Highlights
+#### 💎 Quality and Design Highlights
 
 - SOLID-based architecture for maintainability
 - Dependency Injection for modularity and testing
@@ -166,22 +183,25 @@ You’ll see the interactive Swagger UI, complete with summaries, request schema
 - Responsible AI enforcement via Content Safety
 
   ---
-  🧠 Why FenecAI Matters
+  ### 🧠 Why FenecAI Matters
 
 FenecAI was designed not just as a project, but as a statement of craftsmanship.
 It reflects years of software engineering discipline — merging technical mastery, ethical AI design, and clean architecture into one unified system.
 
-“Discipline, clarity, and excellence — every line of code is a reflection of mindset.”
+**“Discipline, clarity, and excellence — every line of code is a reflection of mindset.”**
 
-📜 License
+### 📜 License
 
 This project is released under the MIT License.
 
-👤 Author
+## 👤 Author
 
 Alonso Gallegos
+
 Senior Software Engineer | Azure AI Engineer
+
 📍 Costa Rica
+
 💼 GitHub – alonsoegm
 
 🌐 “Engineering with purpose, discipline, and conscience.”
@@ -197,7 +217,7 @@ Senior Software Engineer | Azure AI Engineer
 git add README.md
 git commit -m "🦊 Added professional README with architecture and deployment details"
 git push
-
+```
 
 
 
