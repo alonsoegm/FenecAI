@@ -1,0 +1,33 @@
+﻿
+# Build and runtime
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.log
+
+# User-specific files
+.vs/
+.idea/
+*.user
+*.suo
+
+# Environment files
+.env
+.env.*
+secrets.json
+
+# Configuration files (keep safe)
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# OS / IDE noise
+Thumbs.db
+.DS_Store
+
+# Publish output
+publish/
+
+/appsettings.json
