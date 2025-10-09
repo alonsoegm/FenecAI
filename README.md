@@ -18,15 +18,18 @@ This project demonstrates expert-level integration of multiple Azure Cognitive S
 ## 🧭 Architecture Overview
 
 ```mermaid
+
 graph TD
-A[User Request] --> B[ASP.NET Core API]
-B --> C1[Azure OpenAI (Chat, DALL·E, Embeddings)]
-B --> C2[Azure Blob Storage]
-B --> C3[Azure AI Search (Vector Index)]
-B --> C4[Azure Content Safety]
-B --> C5[Application Insights]
+A[User Request] --> B[".NET Core API"]
+B --> C1["Azure OpenAI (Chat\, DALL-E\, Embeddings)"]
+B --> C2["Azure Blob Storage"]
+B --> C3["Azure AI Search (Vector Index)"]
+B --> C4["Azure Content Safety"]
+B --> C5["Application Insights"]
 C2 --> C3
 C3 --> C1
+
+
 ```
 
 
