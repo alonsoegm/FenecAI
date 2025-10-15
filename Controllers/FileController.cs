@@ -2,6 +2,7 @@
 using Swashbuckle.AspNetCore.Annotations;
 using FenecAI.API.Models;
 using FenecAI.API.Services;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI.API.Controllers
 {
@@ -20,13 +21,13 @@ namespace FenecAI.API.Controllers
 	[Produces("application/json")]
 	public class FileController : ControllerBase
 	{
-		private readonly StorageService _storageService;
+		private readonly IStorageService _storageService;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FileController"/> class.
 		/// </summary>
 		/// <param name="storageService">Service responsible for handling Azure Blob Storage operations.</param>
-		public FileController(StorageService storageService)
+		public FileController(IStorageService storageService)
 		{
 			_storageService = storageService;
 		}

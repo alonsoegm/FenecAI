@@ -3,6 +3,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using FenecAI.API.Models;
 using FenecAI.API.Services;
 using System.Text;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI.API.Controllers
 {
@@ -16,15 +17,15 @@ namespace FenecAI.API.Controllers
 	[Produces("application/json")]
 	public class ChatController : ControllerBase
 	{
-		private readonly ChatService _chatService;
-		private readonly ContextSafetyService _contextSafetyService;
+		private readonly IChatService _chatService;
+		private readonly IContextSafetyService _contextSafetyService;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ChatController"/> class.
 		/// </summary>
 		/// <param name="chatService">Service responsible for communicating with Azure OpenAI.</param>
 		/// <param name="contextSafetyService">Service for analyzing prompts to ensure Responsible AI compliance.</param>
-		public ChatController(ChatService chatService, ContextSafetyService contextSafetyService)
+		public ChatController(IChatService chatService, IContextSafetyService contextSafetyService)
 		{
 			_chatService = chatService;
 			_contextSafetyService = contextSafetyService;

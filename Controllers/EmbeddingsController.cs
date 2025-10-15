@@ -2,6 +2,7 @@
 using Swashbuckle.AspNetCore.Annotations;
 using FenecAI.API.Models;
 using FenecAI.API.Services;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI.API.Controllers
 {
@@ -23,13 +24,13 @@ namespace FenecAI.API.Controllers
 	[Produces("application/json")]
 	public class EmbeddingsController : ControllerBase
 	{
-		private readonly EmbeddingsService _embeddingsService;
+		private readonly IEmbeddingsService _embeddingsService;
 
 		/// <summary>
 		/// Initializes the controller with the <see cref="EmbeddingsService"/>.
 		/// </summary>
 		/// <param name="embeddingsService">Service used to generate and compare embeddings.</param>
-		public EmbeddingsController(EmbeddingsService embeddingsService)
+		public EmbeddingsController(IEmbeddingsService embeddingsService)
 		{
 			_embeddingsService = embeddingsService;
 		}
@@ -107,8 +108,8 @@ namespace FenecAI.API.Controllers
 		/// </remarks>
 		[HttpPost("similarity")]
 		[SwaggerOperation(
-			Summary = "Compare text similarity",
-			Description = "Computes cosine similarity between embeddings of two texts to measure semantic closeness."
+		Summary = "Compare text similarity",
+		Description = "Computes cosine similarity between embeddings of two texts to measure semantic closeness."
 		)]
 		[Consumes("application/json")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
@@ -134,7 +135,7 @@ namespace FenecAI.API.Controllers
 			var v2 = await _embeddingsService.GenerateEmbeddingAsync(texts["textB"]);
 
 			// Compute similarity
-			var similarity = EmbeddingsService.CosineSimilarity(v1, v2);
+			var similarity = _embeddingsService.CosineSimilarity(v1, v2);
 
 			return Ok(new
 			{

@@ -1,6 +1,9 @@
 using Microsoft.OpenApi.Models;
 using FenecAI.API.Config;
 using FenecAI.API.Services;
+using FenecAI.API.Models.Settings;
+using FenecAI.API.Services.Vision;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI
 {
@@ -13,16 +16,24 @@ namespace FenecAI
 			// Configuration
 			builder.Services.Configure<AzureOpenAIOptions>(
 				builder.Configuration.GetSection("AzureOpenAI"));
+			builder.Services.Configure<AzureVisionSettings>(
+				builder.Configuration.GetSection("AzureVision"));
 
 			// Services
-			builder.Services.AddSingleton<ChatService>();
-			builder.Services.AddSingleton<StorageService>();
-			builder.Services.AddSingleton<RAGService>();
-			builder.Services.AddScoped<ImageService>();
-			builder.Services.AddScoped<ContextSafetyService>();
-			builder.Services.AddScoped<EmbeddingsService>();
-			builder.Services.AddScoped<MetricsService>();
 
+			builder.Services.AddScoped<IImageAnalysisService, ImageAnalysisService>();
+			builder.Services.AddScoped<IMetricsService, MetricsService>();
+			builder.Services.AddScoped<IEmbeddingsService, EmbeddingsService>();
+			builder.Services.AddScoped<IContextSafetyService, ContextSafetyService>();
+			builder.Services.AddScoped<IImageService, ImageService>();
+			builder.Services.AddScoped<IRAGService, RAGService>();
+			builder.Services.AddScoped<IStorageService, StorageService>();
+			builder.Services.AddScoped<IChatService, ChatService>();
+			builder.Services.AddScoped<ILanguageService, LanguageService>();
+			builder.Services.AddScoped<ISpeechService, SpeechService>();
+			builder.Services.AddScoped<IConversationService, ConversationService>();
+			builder.Services.AddScoped<IQnAService, QnAService>();
+			builder.Services.AddScoped<IDocumentService, DocumentService>();
 
 			// Controllers + Swagger
 			builder.Services.AddControllers();
@@ -37,6 +48,8 @@ namespace FenecAI
 				});
 				c.EnableAnnotations();
 			});
+
+
 
 			var app = builder.Build();
 

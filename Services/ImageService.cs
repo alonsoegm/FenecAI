@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Azure.AI.OpenAI;
 using FenecAI.API.Models;
+using FenecAI.API.Services.Interfaces;
 using OpenAI.Images;
 
 namespace FenecAI.API.Services
@@ -17,7 +18,7 @@ namespace FenecAI.API.Services
 	/// Typical use cases include: creating marketing visuals, concept art, or synthetic datasets for computer vision tasks.
 	/// </para>
 	/// </remarks>
-	public class ImageService
+	public class ImageService : IImageService
 	{
 		private readonly AzureOpenAIClient _openAIClient;
 		private readonly IConfiguration _config;

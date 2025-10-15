@@ -1,9 +1,8 @@
 ﻿using Azure.Storage.Blobs;
 using FenecAI.API.Models;
-using FenecAI.API.Services;
+using FenecAI.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
 
 namespace FenecAI.API.Controllers
 {
@@ -24,8 +23,8 @@ namespace FenecAI.API.Controllers
 	[Produces("application/json")]
 	public class ImageController : ControllerBase
 	{
-		private readonly ImageService _imageService;
-		private readonly ContextSafetyService _contextSafetyService;
+		private readonly IImageService _imageService;
+		private readonly IContextSafetyService _contextSafetyService;
 		private readonly IConfiguration _config;
 
 		/// <summary>
@@ -34,7 +33,7 @@ namespace FenecAI.API.Controllers
 		/// <param name="config">Application configuration for Azure storage and AI settings.</param>
 		/// <param name="imageService">Service responsible for DALL·E image generation.</param>
 		/// <param name="contextSafetyService">Service for evaluating prompt and image safety.</param>
-		public ImageController(IConfiguration config, ImageService imageService, ContextSafetyService contextSafetyService)
+		public ImageController(IConfiguration config, IImageService imageService, IContextSafetyService contextSafetyService)
 		{
 			_imageService = imageService;
 			_config = config;

@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using FenecAI.API.Models;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI.API.Services
 {
@@ -17,7 +18,7 @@ namespace FenecAI.API.Services
 	/// - Later, these files are processed by the <see cref="RAGService"/> for embedding and indexing.
 	/// </para>
 	/// </remarks>
-	public class StorageService
+	public class StorageService: IStorageService
 	{
 		private readonly BlobContainerClient _containerClient;
 

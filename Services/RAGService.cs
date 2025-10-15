@@ -6,6 +6,7 @@ using Azure.Search.Documents.Models;
 using Azure.Storage.Blobs;
 using FenecAI.API.Config;
 using FenecAI.API.Models;
+using FenecAI.API.Services.Interfaces;
 using Microsoft.Extensions.Options;
 using OpenAI.Chat;
 
@@ -27,7 +28,7 @@ namespace FenecAI.API.Services
 	/// - Context-based GPT completions
 	/// </para>
 	/// </remarks>
-	public class RAGService
+	public class RAGService : IRAGService
 	{
 		private readonly AzureOpenAIOptions _openAIOptions;
 		private readonly IConfiguration _config;

@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Azure.AI.OpenAI;
 using FenecAI.API.Models;
+using FenecAI.API.Services.Interfaces;
 using OpenAI.Chat;
 using System.Diagnostics;
 
@@ -21,7 +22,7 @@ namespace FenecAI.API.Services
 	/// affect performance and cost. It aligns with the <b>“Monitor and optimize performance and cost”</b> sub-objective of the AI-102 certification.
 	/// </para>
 	/// </remarks>
-	public class MetricsService
+	public class MetricsService : IMetricsService
 	{
 		private readonly AzureOpenAIClient _openAIClient;
 		private readonly IConfiguration _config;

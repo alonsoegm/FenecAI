@@ -1,5 +1,6 @@
 ﻿using FenecAI.API.Models;
 using FenecAI.API.Services;
+using FenecAI.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -27,13 +28,13 @@ namespace FenecAI.API.Controllers
 	[Produces("application/json")]
 	public class MetricsController : ControllerBase
 	{
-		private readonly MetricsService _metricsService;
+		private readonly IMetricsService _metricsService;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MetricsController"/> class.
 		/// </summary>
 		/// <param name="metricsService">Service responsible for analyzing OpenAI model usage and performance.</param>
-		public MetricsController(MetricsService metricsService)
+		public MetricsController(IMetricsService metricsService)
 		{
 			_metricsService = metricsService;
 		}

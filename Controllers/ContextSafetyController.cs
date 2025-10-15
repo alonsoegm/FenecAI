@@ -1,5 +1,6 @@
 ﻿using FenecAI.API.Models;
 using FenecAI.API.Services;
+using FenecAI.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -24,13 +25,13 @@ namespace FenecAI.API.Controllers
 	[Produces("application/json")]
 	public class ContextSafetyController : ControllerBase
 	{
-		private readonly ContextSafetyService _contextSafetyService;
+		private readonly IContextSafetyService _contextSafetyService;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ContextSafetyController"/> class.
 		/// </summary>
 		/// <param name="contextSafetyService">Service that handles Azure Content Safety analysis.</param>
-		public ContextSafetyController(ContextSafetyService contextSafetyService)
+		public ContextSafetyController(IContextSafetyService contextSafetyService)
 		{
 			_contextSafetyService = contextSafetyService;
 		}

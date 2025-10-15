@@ -2,6 +2,7 @@
 using Swashbuckle.AspNetCore.Annotations;
 using FenecAI.API.Services;
 using FenecAI.API.Models;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI.API.Controllers
 {
@@ -30,13 +31,13 @@ namespace FenecAI.API.Controllers
 	[Produces("application/json")]
 	public class RAGController : ControllerBase
 	{
-		private readonly RAGService _ragService;
+		private readonly IRAGService _ragService;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="RAGController"/> class.
 		/// </summary>
 		/// <param name="ragService">Service that manages ingestion and semantic querying.</param>
-		public RAGController(RAGService ragService)
+		public RAGController(IRAGService ragService)
 		{
 			_ragService = ragService;
 		}

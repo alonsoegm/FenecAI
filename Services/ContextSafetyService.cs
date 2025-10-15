@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Azure.AI.ContentSafety;
 using FenecAI.API.Models;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI.API.Services
 {
@@ -9,7 +10,7 @@ namespace FenecAI.API.Services
 	/// This service detects potentially harmful content across multiple categories
 	/// such as hate, self-harm, sexual, and violence.
 	/// </summary>
-	public class ContextSafetyService
+	public class ContextSafetyService : IContextSafetyService
 	{
 		private readonly ContentSafetyClient _safetyClient;
 		private readonly ILogger<ContextSafetyService> _logger;

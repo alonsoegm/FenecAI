@@ -4,6 +4,7 @@ using OpenAI.Chat;
 using FenecAI.API.Config;
 using FenecAI.API.Models;
 using Microsoft.Extensions.Options;
+using FenecAI.API.Services.Interfaces;
 
 namespace FenecAI.API.Services
 {
@@ -11,7 +12,7 @@ namespace FenecAI.API.Services
 	/// Provides interaction logic with the Azure OpenAI Chat model.
 	/// Handles both standard and streaming completions.
 	/// </summary>
-	public class ChatService
+	public class ChatService : IChatService
 	{
 		// Holds the configuration settings for the Azure OpenAI resource.
 		private readonly AzureOpenAIOptions _options;
